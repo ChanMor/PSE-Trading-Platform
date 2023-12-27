@@ -27,8 +27,6 @@ def get_stock_price(ticker):
     else:
         return None
 
-
-
 if __name__ == "__main__":
     ticket = input("Enter ticker: ")
     stock_price = get_stock_price(ticket)
