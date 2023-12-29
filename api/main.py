@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 import stocks as st
-import fetch_database as fd
+import database_scripts.fetch_database as fd
 
 app = FastAPI()
 

@@ -1,4 +1,4 @@
-import database_manager as db
+from . import database_manager as db
 
 def fetch_user_id(username):
     connection, cursor = db.establish_connection()
@@ -29,4 +29,3 @@ def fetch_user_positions(user_id):
 
 def fetch_user_portfolio(user_id):
     return fetch_data(user_id, "SELECT * FROM portfolio WHERE user_id = %s")[0]
-

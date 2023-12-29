@@ -1,4 +1,4 @@
-import database_manager as db
+from . import database_manager as db
 
 def delete(query):
     connection, cursor = db.establish_connection()

@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 
 from queries import url, headers
 
-
 def fetch_data():
     try:
         response = requests.get(url, headers=headers)
