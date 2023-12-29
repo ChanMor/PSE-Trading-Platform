@@ -1,21 +1,7 @@
-import mysql.connector
-
-def establish_connection():
-    connection = mysql.connector.connect(
-        host='localhost',
-        user='root',
-        password='fcdm110503',
-        database='trading_platform')
-    cursor = connection.cursor()
-
-    return connection, cursor
-
-def close_connection(connection, cursor):
-    connection.close()
-    cursor.close()
+import database_manager as db
 
 def create_user(username, password):
-    connection, cursor = establish_connection()
+    connection, cursor = db.establish_connection()
     cursor.execute("SELECT * FROM users WHERE username = %s", (username,))
     existing_user = cursor.fetchone()
 
@@ -33,10 +19,10 @@ def create_user(username, password):
 
         print(f"User '{username}' created successfully!")
 
-    close_connection(connection, cursor)
+    db.close_connection(connection, cursor)
 
 def login_user(username, password):
-    connection, cursor = establish_connection()
+    connection, cursor = db.establish_connection()
     cursor.execute("SELECT * FROM users WHERE username = %s AND password = %s", (username, password))
     existing_user = cursor.fetchone()
 
@@ -45,10 +31,10 @@ def login_user(username, password):
     else:
         print("Login failed. Please check your username and password.")
 
-    close_connection(connection, cursor)
+    db.close_connection(connection, cursor)
 
 def delete_user(username):
-    connection, cursor = establish_connection()
+    connection, cursor = db.establish_connection()
     cursor.execute("SELECT * FROM users WHERE username = %s", (username,))
     existing_user = cursor.fetchone()
 
@@ -59,7 +45,7 @@ def delete_user(username):
     else:
         print(f"User with username '{username}' not found.")
 
-    close_connection(connection, cursor)
+    db.close_connection(connection, cursor)
 
 
 if __name__ == "__main__":

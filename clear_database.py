@@ -1,45 +1,29 @@
-import mysql.connector
+import database_manager as db
 
-def establish_connection():
-    connection = mysql.connector.connect(
-        host='localhost',
-        user='root',
-        password='fcdm110503',
-        database='trading_platform')
-    cursor = connection.cursor()
-
-    return connection, cursor
-
-def close_connection(connection, cursor):
-    connection.close()
-    cursor.close()
+def delete(query):
+    connection, cursor = db.establish_connection()
+    cursor.execute(query)
+    connection.commit()
+    db.close_connection(connection, cursor)
 
 def clear_transactions():
-    connection, cursor = establish_connection()
-    cursor.execute("DELETE FROM transactions")
-    connection.commit()
-    close_connection(connection, cursor)
+    delete("DELETE FROM transactions")
 
 def clear_positions():
-    connection, cursor = establish_connection()
-    cursor.execute("DELETE FROM positions")
-    connection.commit()
-    close_connection(connection, cursor)
+    delete("DELETE FROM positions")
 
 def clear_portfolio():
-    connection, cursor = establish_connection()
-    cursor.execute("DELETE FROM portfolio")
-    connection.commit()
-    close_connection(connection, cursor)
+    delete("DELETE FROM portfolio")
 
 def clear_users():
-    connection, cursor = establish_connection()
-    cursor.execute("DELETE FROM users")
-    connection.commit()
-    close_connection(connection, cursor)
+    delete("DELETE FROM users")
 
 def clear_stocks():
-    connection, cursor = establish_connection()
-    cursor.execute("DELETE FROM stocks")
-    connection.commit()
-    close_connection(connection, cursor)
+    delete("DELETE FROM stocks")
+
+def clear_database():
+    clear_transactions()
+    clear_positions()
+    clear_portfolio()
+    clear_users()
+    clear_stocks()

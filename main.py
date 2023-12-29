@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-from fastapi import HTTPException
 import stocks as st
 import fetch_database as fd
 
@@ -7,18 +6,28 @@ app = FastAPI()
 
 @app.get('/listings')
 async def listings():
-    return st.listings()\
+    return st.listings()
     
 @app.get('/stock-price/{stock}')
 async def price(stock: str):
     return st.fetch_price(stock)
 
-
-@app.get('/{username}/transaction-history')
+@app.get('/{username}/user_id')
 async def price(username: str):
-    try:
-        return fd.fetch_user_transactions(username)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
+    return fd.fetch_user_id(username)
+
+@app.get('/{user_id}/transaction-history')
+async def price(user_id: str):
+    return fd.fetch_user_transactions(user_id)
+
+@app.get('/{user_id}/stock-positions')
+async def price(user_id: str):
+    return fd.fetch_user_positions(user_id)
+
+@app.get('/{user_id}/portfolio')
+async def price(user_id: str):
+    return fd.fetch_user_portfolio(user_id)
+
+
 
 

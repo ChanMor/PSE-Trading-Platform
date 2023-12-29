@@ -1,23 +1,9 @@
-import mysql.connector
+import database_manager as db
 import datetime
 import queries as query
 
-def establish_connection():
-    connection = mysql.connector.connect(
-        host='localhost',
-        user='root',
-        password='fcdm110503',
-        database='trading_platform')
-    cursor = connection.cursor()
-
-    return connection, cursor
-
-def close_connection(connection, cursor):
-    connection.close()
-    cursor.close()
-
 def update_portfolio(user_id, transaction_type, total_shares, price):
-    connection, cursor = establish_connection()
+    connection, cursor = db.establish_connection()
 
     update_portfolio_values = (total_shares * price, user_id)
     if transaction_type == 'BUY':
@@ -27,10 +13,10 @@ def update_portfolio(user_id, transaction_type, total_shares, price):
     
     cursor.execute(update_portfolio_query, update_portfolio_values)
     connection.commit()
-    close_connection(connection, cursor)
+    db.close_connection(connection, cursor)
 
 def add_transaction(user_id, stock_symbol, transaction_type, total_shares, price):
-    connection, cursor = establish_connection()
+    connection, cursor = db.establish_connection()
 
     transaction_date = datetime.datetime.now()
 
@@ -45,7 +31,7 @@ def add_transaction(user_id, stock_symbol, transaction_type, total_shares, price
     # cursor.execute(query.update_stock_position_query, update_stock_position_values)
     # connection.commit()
 
-    close_connection(connection, cursor)
+    db.close_connection(connection, cursor)
 
 
 if __name__ == '__main__':
