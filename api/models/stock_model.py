@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-from queries import url, headers
+from util.queries import url, headers
 
 def fetch_data():
     try:
