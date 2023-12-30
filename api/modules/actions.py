@@ -1,4 +1,4 @@
-import database_scripts.database_manager as db
+import api.database_manager as db
 import datetime
 import queries as query
 

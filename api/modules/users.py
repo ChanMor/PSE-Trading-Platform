@@ -1,4 +1,4 @@
-import database_scripts.database_manager as db
+import api.database_manager as db
 
 def create_user(username, password):
     connection, cursor = db.establish_connection()
