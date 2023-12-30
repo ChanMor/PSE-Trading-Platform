@@ -1,4 +1,3 @@
-# routes/stocks.py
 from fastapi import APIRouter
 import models.stock_model as sm
 
