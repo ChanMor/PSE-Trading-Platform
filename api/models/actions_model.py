@@ -15,4 +15,10 @@ class BalanceRequest(BaseModel):
     user_id: int
     amount: Decimal
 
+class BuyRequest(BaseModel):
+    user_id: int
+    stock_symbol: str
+    total_shares: int
+    price: Decimal
+
 
