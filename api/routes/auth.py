@@ -3,8 +3,7 @@ import services.auth_service as au
 from models.auth_model import CreateUserRequest, LoginUserRequest, DeleteUserRequest
 
 router = APIRouter()    
-
-
+    
 @router.post('/login')
 async def login_user_handler(request: LoginUserRequest):
     return au.login_user(request.username, request.password)

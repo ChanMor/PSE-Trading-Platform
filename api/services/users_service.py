@@ -1,4 +1,3 @@
-import util.database_manager as db
 from util.user_data import fetch_id, fetch_data
 
 def fetch_user_id(username):
