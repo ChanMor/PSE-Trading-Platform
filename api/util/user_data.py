@@ -17,7 +17,11 @@ def fetch_id(username):
 
     cursor.execute("SELECT user_id FROM users WHERE username = %s", (username,))
     user_id_row = cursor.fetchone()
-    
+
+    if user_id_row is None:
+        db.close_connection(connection, cursor)
+        return {'message': 'User not found!'}
+
     db.close_connection(connection, cursor)
     return {'user_id': user_id_row[0]}
 
