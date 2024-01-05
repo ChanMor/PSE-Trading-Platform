@@ -37,7 +37,7 @@ def update_cash_balance(user_id, amount):
 
     db.close_connection(connection, cursor)
 
-def update_position(transaction, user_id, stock_symbol, total_shares, price, connection, cursor):
+def update_position(transaction, user_id, stock_symbol, total_shares, price):
     connection, cursor = db.establish_connection()
 
     if transaction == 'BUY':
@@ -52,7 +52,7 @@ def update_position(transaction, user_id, stock_symbol, total_shares, price, con
     db.close_connection(connection, cursor)
 
 
-def update_transaction(transaction, user_id, stock_symbol, total_shares, price, amount, connection, cursor):
+def update_transaction(transaction, user_id, stock_symbol, total_shares, price, amount):
     connection, cursor = db.establish_connection()
     transaction_date = datetime.datetime.now()
 

@@ -5,7 +5,7 @@ import util.actions_module as am
 def update_username(username, password, new_username):
     connection, cursor = db.establish_connection()
 
-    if not am.authenticate_user(username, password, cursor):
+    if not am.authenticate_user(username, password):
         db.close_connection(connection, cursor)
         return {"message": "Invalid username or password!"}
 
@@ -18,7 +18,7 @@ def update_username(username, password, new_username):
 def update_password(username, password, new_password):
     connection, cursor = db.establish_connection()
 
-    if not am.authenticate_user(username, password, cursor):
+    if not am.authenticate_user(username, password):
         db.close_connection(connection, cursor)
         return {"message": "Invalid username or password!"}
 
@@ -34,7 +34,7 @@ def deposit(user_id, amount):
 
     connection, cursor = db.establish_connection()
 
-    if not am.authenticate_user_id(user_id, cursor):
+    if not am.authenticate_user_id(user_id):
         db.close_connection(connection, cursor)
         return {"message": "User not found!"}
 
@@ -50,7 +50,7 @@ def withdraw(user_id, amount):
     
     connection, cursor = db.establish_connection()
 
-    cash_balance = am.get_cash_balance(user_id, cursor)
+    cash_balance = am.get_cash_balance(user_id)
 
     if not cash_balance or cash_balance[0] < amount:
         db.close_connection(connection, cursor)
@@ -67,15 +67,15 @@ def buy(user_id, stock_symbol, total_shares, price):
     connection, cursor = db.establish_connection()
 
     amount = total_shares * price
-    cash_balance = am.get_cash_balance(user_id, cursor)
+    cash_balance = am.get_cash_balance(user_id)
 
     if not cash_balance or cash_balance[0] < amount:
         db.close_connection(connection, cursor)
         return {"message": "Transaction failed. Insufficient balance!"}
 
-    am.update_cash_balance(user_id, -1*amount, connection, cursor)
-    am.update_position('BUY', user_id, stock_symbol, total_shares, price, connection, cursor)
-    am.update_transaction('BUY', user_id, stock_symbol, total_shares, price, None, connection, cursor)
+    am.update_cash_balance(user_id, -1*amount)
+    am.update_position('BUY', user_id, stock_symbol, total_shares, price)
+    am.update_transaction('BUY', user_id, stock_symbol, total_shares, price, None)
 
 
     db.close_connection(connection, cursor)
@@ -96,9 +96,9 @@ def sell(user_id, stock_symbol, shares):
 
     amount = shares * current_market_price[0]
 
-    am.update_cash_balance(user_id, amount, connection, cursor)
-    am.update_position('SELL', user_id, stock_symbol, shares, current_market_price, connection, cursor)
-    am.update_transaction('SELL', user_id, stock_symbol, shares, current_market_price, amount, connection, cursor)
+    am.update_cash_balance(user_id, amount)
+    am.update_position('SELL', user_id, stock_symbol, shares, current_market_price)
+    am.update_transaction('SELL', user_id, stock_symbol, shares, current_market_price, amount)
 
     db.close_connection(connection, cursor)
     return {"message": f"Successfully sold {shares} shares of {stock_symbol}!"}
