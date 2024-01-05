@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 import services.actions_service as ac
-from models.actions_model import UpdateUsernameRequest, UpdatePasswordRequest, BalanceRequest, BuyRequest
+from models.actions_model import UpdateUsernameRequest, UpdatePasswordRequest, BalanceRequest, BuyRequest, SellRequest
 
 router = APIRouter()   
 
@@ -23,3 +23,7 @@ async def withdraw(request: BalanceRequest):
 @router.post('/buy')
 async def buy(request: BuyRequest):
     return ac.buy(request.user_id, request.stock_symbol, request.total_shares, request.price)
+
+@router.post('/sell')
+async def sell(request: SellRequest):
+    return ac.sell(request.user_id, request.stock_symbol, request.shares)

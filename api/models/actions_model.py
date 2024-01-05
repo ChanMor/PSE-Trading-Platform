@@ -21,4 +21,9 @@ class BuyRequest(BaseModel):
     total_shares: int
     price: Decimal
 
+class SellRequest(BaseModel):
+    user_id: int
+    stock_symbol: str
+    shares: int
+
 
