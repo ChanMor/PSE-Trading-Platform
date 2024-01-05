@@ -90,19 +90,15 @@ def sell(user_id, stock_symbol, shares):
     cursor.execute("SELECT total_shares FROM positions WHERE user_id = %s AND symbol = %s", (user_id, stock_symbol,))
     total_shares = cursor.fetchone()
 
-    if not total_shares:
-        db.close_connection(connection, cursor)
-        return {"message": f"Transaction failed. No open position for {stock_symbol}"}
-
-    if total_shares[0] < shares:
+    if not total_shares or total_shares[0] < shares:
         db.close_connection(connection, cursor)
         return {"message": "Transaction failed. Insufficient shares!"}
 
-    sale_amount = shares * current_market_price[0]
+    amount = shares * current_market_price[0]
 
-    am.update_cash_balance(user_id, sale_amount, connection, cursor)
+    am.update_cash_balance(user_id, amount, connection, cursor)
     am.update_position('SELL', user_id, stock_symbol, shares, current_market_price, connection, cursor)
-    am.update_transaction('SELL', user_id, stock_symbol, shares, current_market_price, sale_amount, connection, cursor)
+    am.update_transaction('SELL', user_id, stock_symbol, shares, current_market_price, amount, connection, cursor)
 
     db.close_connection(connection, cursor)
     return {"message": f"Successfully sold {shares} shares of {stock_symbol}!"}
