@@ -1,31 +1,48 @@
-// Sample data (replace this with your actual data)
-const data = [
-    { id: 1, name: 'John Doe', email: 'john@example.com' },
-    { id: 2, name: 'Jane Doe', email: 'jane@example.com' },
-    // Add more data as needed
-];
+async function updateListings() {
+    var listingsApiUrl = "http://127.0.0.1:8000/stocks/listings";
 
-// Function to populate the table with data
-function populateTable() {
-    const tableBody = document.querySelector('#data-table tbody');
+    // Display loading screen
+    document.getElementById('loading-screen').style.display = 'flex';
 
-    // Clear existing rows
-    tableBody.innerHTML = '';
+    try {
+        // Fetch data from the API
+        var response = await fetch(listingsApiUrl);
 
-    // Populate the table with data
-    data.forEach(item => {
-        const row = tableBody.insertRow();
-        const cell1 = row.insertCell(0);
-        const cell2 = row.insertCell(1);
-        const cell3 = row.insertCell(2);
+        if (!response.ok) {
+            throw new Error('Failed to fetch data');
+        }
 
-        cell1.textContent = item.id;
-        cell2.textContent = item.name;
-        cell3.textContent = item.email;
-    });
+        var listings = await response.json();
+
+        const stockListings = document.getElementById('stockListings');
+
+        // Clear existing content
+        stockListings.innerHTML = '';
+
+        // Iterate through the listings and populate the table
+        listings.forEach(stock => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${stock.symbol}</td>
+                <td>${stock.name}</td>
+                <td>${stock.price}</td>
+            `;
+            stockListings.appendChild(row);
+        });
+    } catch (error) {
+        console.error('Error updating listings:', error);
+    } finally {
+        // Hide loading screen
+        document.getElementById('loading-screen').style.display = 'none';
+    }
 }
 
-// Call the function to initially populate the table\
+window.onload = updateListings;
 
-window.onload = populateTable;
+function signOut() {
+    window.location.href = "index.html";
+}
 
+function dashboard() {
+    window.location.href = "dashboard.html";
+}

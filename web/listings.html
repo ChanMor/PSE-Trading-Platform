@@ -8,20 +8,45 @@
 </head>
 <body>
 
-    <h2>Data Table</h2>
+    <header>
+
+        <nav id="desktop-nav">
+            <div class="logo">Trading Dashboard</div>
+            <div>
+              <ul class="nav-links">
+                <li><a href="#trade.html" onclick="trade();">Trade</a></li>
+                <li><a href="#listings.html" onclick="listings();">Listings</a></li>
+                <li><a href="#transactions.html" onclick="transactions();">Transaction History</a></li>
+                <li><a href="#transactions.html" onclick="dashboard();">Dashboard</a></li>
+                <button id="signOutButton" type="button" onclick="signOut();">Sign Out</button>
+              </ul>
+            </div>
+        </nav>
+
+    </header>
     
-    <table id="data-table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Data will be dynamically inserted here -->
-        </tbody>
-    </table>
+    <div id="loading-screen">
+        <div id="loading-spinner"></div>
+        <p></p>
+    </div>
+
+    <section id="listings-content">
+        
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Name</th>
+                        <th>Current Price</th>
+                    </tr>
+                </thead>
+                <tbody id="stockListings">
+                </tbody>
+            </table>
+        </div>
+
+    </section>
 
     <script src="listings.js"></script>
 </body>

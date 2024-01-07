@@ -1,14 +1,140 @@
-table {
-    border-collapse: collapse;
-    width: 100%;
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #333;
 }
 
-th, td {
+header {
+    background-color: #ffffff;
+    color: #000;
+    padding: 20px;
+    text-align: center;
+}
+
+
+#desktop-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 16px 250px 16px; 
+}
+
+#desktop-nav .logo {
+    font-size: 30px;
+    color: #000;
+}
+
+#desktop-nav ul.nav-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#desktop-nav ul.nav-links li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+#desktop-nav ul.nav-links li:last-child {
+    margin-right: 0; 
+}
+
+#desktop-nav ul.nav-links li a {
+    text-decoration: none;
+    color: #000;
+}
+
+#desktop-nav ul.nav-links li a:hover {
+    text-decoration: underline;
+}
+
+#desktop-nav button {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px;
+    border: 1px solid #000000;
+    border-radius: 10px; 
+    cursor: pointer;
+    width: 100px; 
+}
+
+#desktop-nav button:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#listings-content {
+    max-width: 1000px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#listings-content h2 {
+    font-size: 24px;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+#listings-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#listings-content th, #listings-content td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 12px;
     text-align: left;
 }
 
-th {
-    background-color: #f2f2f2;
+#listings-content th {
+    background-color: #ffffff;
 }
+
+#listings-content tbody tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+#listings-content tbody tr:hover {
+    background-color: #f6f6f6;
+}
+
+
+#loading-screen {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 10000; 
+}
+
+#loading-spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top: 4px solid #3498db;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#listings-content {
+    display: block;
+}
+

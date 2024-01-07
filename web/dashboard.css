@@ -108,7 +108,9 @@ header {
 #dashboard-content table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
 }
 
 #dashboard-content th, #dashboard-content td {
@@ -118,19 +120,56 @@ header {
 }
 
 #dashboard-content th {
-    background-color: #f2f2f2;
+    background-color: #ffffff;
 }
 
 #dashboard-content tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #ffffff;
 }
 
 #dashboard-content tbody tr:hover {
-    background-color: #e6f7ff;
+    background-color: #f6f6f6;
+}
+
+#dashboard-content th:first-child {
+    text-align: left;
+    padding-left: 30px;
+}
+
+#dashboard-content td:first-child, #dashboard-content th:last-child {
+    text-align: center;
 }
 
 #dashboard-content td:last-child, #dashboard-content th:last-child {
     text-align: right;
+}
+
+#dashboard-content button{
+    color: #ffffff;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 0;
+    border-radius: 10px; 
+    cursor: pointer;
+    width: 50px; 
+}
+
+#dashboard-content button.buyButton {
+    border: 1px solid #359620;
+    background-color: #359620;
+
+}
+
+#dashboard-content button.sellButton {
+    border: 1px solid #c64545;
+    background-color: #c64545;
+}
+
+#dashboard-content button:hover {
+    background-color: #ffffff;
+    color: #000000;
 }
 
 

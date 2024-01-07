@@ -33,8 +33,8 @@ async function updateDashboard() {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>
-                <a href="#" class="action-link buy">Buy</a> | 
-                <a href="#" class="action-link sell">Sell</a>
+                <button class="buyButton" type="button" onclick="buyPosition();">Buy</button>  
+                <button class="sellButton" type="button" onclick="sellPosition();">Sell</button>
             </td>
             <td>${position.symbol}</td>
             <td>${position.average_price}</td>
@@ -64,4 +64,12 @@ function listings() {
 
 function transactions() {
     window.location.href = "transactions.html";
+}
+
+function buyPosition(){
+
+}
+
+function sellPosition(){
+
 }
