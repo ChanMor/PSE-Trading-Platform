@@ -1,0 +1,138 @@
+/* dashboard.css */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #333;
+}
+
+header {
+    background-color: #ffffff;
+    color: #000;
+    padding: 20px;
+    text-align: center;
+}
+
+#desktop-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 16px 250px 16px; 
+}
+
+#desktop-nav .logo {
+    font-size: 30px;
+    color: #000;
+}
+
+#desktop-nav ul.nav-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#desktop-nav ul.nav-links li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+#desktop-nav ul.nav-links li:last-child {
+    margin-right: 0; 
+}
+
+#desktop-nav ul.nav-links li a {
+    text-decoration: none;
+    color: #000;
+}
+
+#desktop-nav ul.nav-links li a:hover {
+    text-decoration: underline;
+}
+
+#desktop-nav button {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px;
+    border: 1px solid #000000;
+    border-radius: 10px; 
+    cursor: pointer;
+    width: 100px; 
+}
+
+#desktop-nav button:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#balance-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 0px 265px 0px; 
+}
+
+#balance-content .balance {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#balance-content .balance h3 {
+    margin: 10px;
+    font-weight: bold;
+}
+
+#balance-content .balance h3 span {
+    font-weight: normal;
+}
+
+#dashboard-content {
+    max-width: 1000px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#dashboard-content h2 {
+    font-size: 24px;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+#dashboard-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#dashboard-content th, #dashboard-content td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+#dashboard-content th {
+    background-color: #f2f2f2;
+}
+
+#dashboard-content tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#dashboard-content tbody tr:hover {
+    background-color: #e6f7ff;
+}
+
+#dashboard-content td:last-child, #dashboard-content th:last-child {
+    text-align: right;
+}
+
+
+
+

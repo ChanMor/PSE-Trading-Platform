@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSE Virtual Trading Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <h1>PSE Virtual Trading App</h1>
+        <p>Trade PSE listed stocks with real time data</p>
+    </header>
+
+    <section id="signin">
+        <h2 id="signinText"> Sign In</h2>
+        <form>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button id="signinButton" type="button" onclick="auth();">Sign In</button>
+
+            <p>Don't have an account? <a href="javascript:void(0);" onclick="toggleButtonText();">Create one</a></p>
+        </form>
+    </section>
+
+</body>
+</html>

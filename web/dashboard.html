@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <header>
+
+        <nav id="desktop-nav">
+            <div class="logo">Trading Dashboard</div>
+            <div>
+              <ul class="nav-links">
+                <li><a href="#trade.html" onclick="trade();">Trade</a></li>
+                <li><a href="#listings.html" onclick="listings();">Listings</a></li>
+                <li><a href="#transactions.html" onclick="transactions();">Transaction History</a></li>
+                <button id="signOutButton" type="button" onclick="signOut();">Sign Out</button>
+              </ul>
+            </div>
+        </nav>
+
+    </header>
+
+    <section id="balance-content">
+
+        <div>
+            <ul class="balance">
+            <h3>Cash Balance:&nbsp;&nbsp;<span id="cashBalance">0.00</span></h3>
+            <h3>Total Equities:&nbsp;&nbsp;<span id="totalEquities">0.00</span></h3>
+            </ul>
+        </div>
+
+    </section>
+
+    <section id="dashboard-content">
+        
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>Symbol</th>
+                        <th>Average Price</th>
+                        <th>Shares</th>
+                        <th>Current Price</th>
+                        <th>Market Value</th>
+                        <th>Gain/Loss</th>
+                        <th>% Gain/Loss</th>
+                    </tr>
+                </thead>
+                <tbody id="openPositions">
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+    <script src="dashboard.js" defer></script>
+</body>
+</html>

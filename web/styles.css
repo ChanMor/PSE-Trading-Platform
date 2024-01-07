@@ -1,0 +1,78 @@
+/* styles.css */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #000;
+}
+
+header {
+    background-color: #fff;
+    color: #000;
+    padding: 20px;
+    text-align: center;
+}
+
+section#signin {
+    max-width: 400px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #000; /* Set text color to black */
+}
+
+section#signin h2 {
+    font-family: 'Roboto', sans-serif;
+    margin: 20px;
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+}
+
+section#signin form {
+    display: flex;
+    flex-direction: column;
+}
+
+section#signin label {
+    margin-bottom: 8px;
+}
+
+section#signin input {
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+section#signin button {
+    background-color: #fff;
+    color: #000;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+section#signin button:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+section#signin p {
+    color: #000000;
+    margin-top: 30px;
+}
+
+section#signin a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+section#signin a:hover {
+    text-decoration: underline;
+}
