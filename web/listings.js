@@ -14,21 +14,17 @@ async function updateListings() {
 
         var listings = await response.json();
 
-        const stockListings = document.getElementById('stockListings');
+        const sanitizedMonth = "listings"; // You can adjust this based on your needs
+        const listingsTable = createListingsTable(listings, sanitizedMonth);
+
+        // Get the container where you want to append the table
+        const listingsContainer = document.getElementById('listings-content');
 
         // Clear existing content
-        stockListings.innerHTML = '';
+        listingsContainer.innerHTML = '';
 
-        // Iterate through the listings and populate the table
-        listings.forEach(stock => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${stock.symbol}</td>
-                <td>${stock.name}</td>
-                <td>${stock.price}</td>
-            `;
-            stockListings.appendChild(row);
-        });
+        // Append the new table to the container
+        listingsContainer.appendChild(listingsTable);
     } catch (error) {
         console.error('Error updating listings:', error);
     } finally {
@@ -37,12 +33,75 @@ async function updateListings() {
     }
 }
 
+function createListingsTable(listings, sanitizedMonth) {
+    const listingsTable = document.createElement('table');
+    listingsTable.innerHTML = `
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody id="userListings-${sanitizedMonth}">
+        </tbody>
+    `;
+
+    const listingsBody = listingsTable.querySelector(`#userListings-${sanitizedMonth}`);
+
+    listings.forEach(stock => {
+        const [price, change] = stock.price.split(" ");
+        const isNegative = stock.price.includes('-');
+        const priceClass = isNegative ? 'negative' : 'positive';
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${stock.symbol}</td>
+            <td>${stock.name}</td>
+            <td>${price} <span class="${priceClass}">${change}%</span></td>
+        `;
+        listingsBody.appendChild(row);
+    });
+
+    return listingsTable;
+}
+
+
 window.onload = updateListings;
 
 function signOut() {
     window.location.href = "index.html";
 }
 
+function trade() {
+    saveUserId("trade.html")
+}
+
+function listings() {
+    saveUserId("listings.html")
+}
+
+function transactions() {
+    saveUserId("transactions.html")
+}
+
 function dashboard() {
-    window.location.href = "dashboard.html";
+    saveUserId("dashboard.html")
+}
+
+
+function getUserId() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const encodedData = urlParams.get('data');
+    const apiData = JSON.parse(decodeURIComponent(encodedData));
+    return apiData.key
+}
+
+
+async function saveUserId(html) {
+    const apiData = { key: getUserId() };
+    const queryString = `?data=${encodeURIComponent(JSON.stringify(apiData))}`;
+
+    window.location.href = `${html}${queryString}`;
 }

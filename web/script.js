@@ -32,8 +32,7 @@ async function auth() {
         const data = await response.json();
 
         if (data.message === "User created successfully!" || data.message === "User login successfully!") {
-            saveUserIdToLocalStorage(username);
-            //window.location.href = "dashboard.html";
+            saveUserId(username);
         } else {
             console.error("Authentication failed:", data.message);
         }
@@ -44,22 +43,17 @@ async function auth() {
 
 
 
-async function saveUserIdToLocalStorage(username) {
+async function saveUserId(username) {
     var userIdApiUrl = `http://127.0.0.1:8000/users/${username}/user_id`;
     var response = await fetch(userIdApiUrl);
     var data = await response.json();
     var userId = data.user_id;
 
 
-    // Assuming you fetched data from the API and stored it in a variable named 'apiData'
     const apiData = { key: userId };
-
-    // Convert data to a query string
     const queryString = `?data=${encodeURIComponent(JSON.stringify(apiData))}`;
 
-    // Redirect to the second HTML page with the query string
     window.location.href = `dashboard.html${queryString}`;
-
 }
 
 

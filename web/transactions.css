@@ -1,5 +1,3 @@
-/* dashboard.css */
-
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -67,30 +65,15 @@ header {
     color: #000000;
 }
 
-#balance-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ffffff;
-    padding: 0px 265px 0px; 
-}
 
-#balance-content .balance {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
 
-#balance-content .balance h3 {
-    margin: 10px;
-    font-weight: bold;
-}
-
-#balance-content .balance h3 span {
+#transactions-content div {
     font-weight: normal;
+    margin: 20px auto;
+
 }
 
-#dashboard-content {
+#transactions-content {
     max-width: 1000px;
     margin: 20px auto;
     background-color: #fff;
@@ -99,87 +82,63 @@ header {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#dashboard-content h2 {
+#transactions-content h2 {
     font-size: 24px;
     color: #000;
     margin-bottom: 20px;
 }
 
-#dashboard-content table {
+#transactions-content table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
     margin-bottom: 10px;
-
 }
 
-#dashboard-content th, #dashboard-content td {
+#transactions-content th, #transactions-content td {
     border: 1px solid #ddd;
     padding: 12px;
     text-align: left;
 }
 
-#dashboard-content th {
+#transactions-content th {
     background-color: #ffffff;
 }
 
-#dashboard-content tbody tr:nth-child(even) {
+#transactions-content tbody tr:nth-child(even) {
     background-color: #ffffff;
 }
 
-#dashboard-content tbody tr:hover {
+#transactions-content tbody tr:hover {
     background-color: #f6f6f6;
 }
 
-#dashboard-content th:first-child {
-    text-align: left;
-    padding-left: 30px;
+#transactions-content td:nth-last-child(3), #transactions-content th:nth-last-child(3) {
+    padding-left: 25px;  
+    max-width: 30px;  
 }
 
-#dashboard-content td:first-child, #dashboard-content th:last-child {
-    text-align: center;
+#transactions-content td:nth-last-child(5), #transactions-content th:nth-last-child(5) {
+    padding-left: 30px;  
+    max-width: 50px;  
 }
 
-#dashboard-content td:last-child, #dashboard-content th:last-child {
+
+#transactions-content td:nth-last-child(2), #transactions-content th:nth-last-child(2) {
+    padding-left: 30px;  
+    max-width: 50px;  
+}
+
+#transactions-content td:last-child, #transactions-content th:last-child {
     text-align: right;
+    padding-right: 50px;  
+    max-width: 50px;   
 }
 
-#dashboard-content button{
-    color: #ffffff;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin: 0;
-    border-radius: 10px; 
-    cursor: pointer;
-    width: 50px; 
-}
-
-#dashboard-content button.buyButton {
-    border: 1px solid #359620;
-    background-color: #359620;
-
-}
-
-#dashboard-content button.sellButton {
-    border: 1px solid #c64545;
-    background-color: #c64545;
-}
-
-#dashboard-content button:hover {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-.positive {
+.buy {
     color: green;
 }
 
-.negative {
+.sell {
     color: red;
 }
-
-
-
-

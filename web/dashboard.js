@@ -1,5 +1,4 @@
 
-
 function getUserId() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -22,14 +21,19 @@ async function updateDashboard() {
 
     console.log(positionsData)
 
-    document.getElementById('cashBalance').innerText = portfolioData[0].cash_balance.toFixed(2);
-    document.getElementById('totalEquities').innerText = portfolioData[0].total_equities.toFixed(2);
+    document.getElementById('cashBalance').innerText = portfolioData[0].cash_balance.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    document.getElementById('totalEquities').innerText = portfolioData[0].total_equities.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 
 
     const openPositionsElement = document.getElementById('openPositions');
     openPositionsElement.innerHTML = '';
 
     positionsData.forEach(position => {
+
+        const isNegative = position.gain_loss < 0;
+        const priceClass = isNegative ? 'negative' : 'positive';
+
+
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>
@@ -37,12 +41,12 @@ async function updateDashboard() {
                 <button class="sellButton" type="button" onclick="sellPosition();">Sell</button>
             </td>
             <td>${position.symbol}</td>
-            <td>${position.average_price}</td>
+            <td>${position.average_price.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</td>
             <td>${position.total_shares}</td>
-            <td>${position.current_market_price}</td>
-            <td>${position.market_value}</td>
-            <td>${position.gain_loss}</td>
-            <td>${position.percentage_gain_loss}%</td>
+            <td>${position.current_market_price.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</td>
+            <td>${position.market_value.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</td>
+            <td class=${priceClass}>${position.gain_loss.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}</td>
+            <td class=${priceClass}>${position.percentage_gain_loss}%</td>
         `;
         openPositionsElement.appendChild(row);
     });
@@ -55,15 +59,15 @@ function signOut() {
 }
 
 function trade() {
-    window.location.href = "trade.html";
+    saveUserId("trade.html")
 }
 
 function listings() {
-    window.location.href = "listings.html";
+    saveUserId("listings.html")
 }
 
 function transactions() {
-    window.location.href = "transactions.html";
+    saveUserId("transactions.html")
 }
 
 function buyPosition(){
@@ -72,4 +76,11 @@ function buyPosition(){
 
 function sellPosition(){
 
+}
+
+async function saveUserId(html) {
+    const apiData = { key: getUserId() };
+    const queryString = `?data=${encodeURIComponent(JSON.stringify(apiData))}`;
+
+    window.location.href = `${html}${queryString}`;
 }

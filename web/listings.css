@@ -13,7 +13,6 @@ header {
     text-align: center;
 }
 
-
 #desktop-nav {
     display: flex;
     justify-content: space-between;
@@ -66,6 +65,13 @@ header {
     color: #000000;
 }
 
+
+
+
+
+
+
+
 #listings-content {
     max-width: 1000px;
     margin: 20px auto;
@@ -105,6 +111,15 @@ header {
 #listings-content tbody tr:hover {
     background-color: #f6f6f6;
 }
+
+#listings-content .positive {
+    color: green;
+}
+
+#listings-content .negative {
+    color: red;
+}
+
 
 
 #loading-screen {

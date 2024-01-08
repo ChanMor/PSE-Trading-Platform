@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Table</title>
+    <link rel="stylesheet" href="trade.css">
+</head>
+<body>
+
+    <header>
+
+        <nav id="desktop-nav">
+            <div class="logo">Trading Dashboard</div>
+            <div>
+              <ul class="nav-links">
+                <li><a href="#trade.html" onclick="trade();">Trade</a></li>
+                <li><a href="#listings.html" onclick="listings();">Listings</a></li>
+                <li><a href="#transactions.html" onclick="transactions();">Transaction History</a></li>
+                <li><a href="#transactions.html" onclick="dashboard();">Dashboard</a></li>
+                <button id="signOutButton" type="button" onclick="signOut();">Sign Out</button>
+              </ul>
+            </div>
+        </nav>
+
+    </header>
+    
+    <div id="loading-screen">
+        <div id="loading-spinner"></div>
+        <p></p>
+    </div>
+
+    <section id="transactions-content">
+
+ 
+    </section>
+
+    <script src="trade.js"></script>
+</body>
+</html>
