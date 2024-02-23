@@ -67,13 +67,12 @@ header {
 
 
 
-#transactions-content div {
-    font-weight: normal;
-    margin: 20px auto;
 
-}
 
-#transactions-content {
+
+
+
+#listings-content {
     max-width: 1000px;
     margin: 20px auto;
     background-color: #fff;
@@ -82,63 +81,81 @@ header {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#transactions-content h2 {
+#listings-content h2 {
     font-size: 24px;
     color: #000;
     margin-bottom: 20px;
 }
 
-#transactions-content table {
-    width: 100%;
+#listings-content table {
+    width: 98%;
     border-collapse: collapse;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px;
 }
 
-#transactions-content th, #transactions-content td {
+#listings-content th, #listings-content td {
     border: 1px solid #ddd;
     padding: 12px;
     text-align: left;
 }
 
-#transactions-content th {
+#listings-content th {
     background-color: #ffffff;
 }
 
-#transactions-content tbody tr:nth-child(even) {
-    background-color: #ffffff;
-}
-
-#transactions-content tbody tr:hover {
+#listings-content tbody tr:hover {
     background-color: #f6f6f6;
 }
 
-#transactions-content td:nth-last-child(3), #transactions-content th:nth-last-child(3) {
-    padding-left: 25px;  
-    max-width: 30px;  
-}
-
-#transactions-content td:nth-last-child(5), #transactions-content th:nth-last-child(5) {
-    padding-left: 30px;  
-    max-width: 50px;  
-}
-
-
-#transactions-content td:nth-last-child(2), #transactions-content th:nth-last-child(2) {
-    padding-left: 30px;  
-    max-width: 50px;  
-}
-
-#transactions-content td:last-child, #transactions-content th:last-child {
-    text-align: right;
-    padding-right: 50px;  
-    max-width: 50px;   
-}
-
-.buy {
+#listings-content .positive {
     color: green;
 }
 
-.sell {
+#listings-content .negative {
     color: red;
 }
+
+#listings-content h2 {
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
+
+#listings-content p {
+    padding-left: 10px;
+    margin-bottom: 30px;
+    margin-top: 0px;
+}
+
+
+
+#loading-screen {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 10000; 
+}
+
+#loading-spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top: 4px solid #3498db;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#listings-content {
+    display: block;
+}
+

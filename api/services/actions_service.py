@@ -1,5 +1,6 @@
 import util.database_manager as db
 import util.actions_module as am
+import services.stocks_service as st
 
 
 def update_username(username, password, new_username):
@@ -51,7 +52,6 @@ def withdraw(user_id, amount):
     connection, cursor = db.establish_connection()
 
     cash_balance = am.get_cash_balance(user_id)
-
     if not cash_balance or cash_balance[0] < amount:
         db.close_connection(connection, cursor)
         return {"message": "Withdrawal failed. Insufficient balance!"}
@@ -63,8 +63,10 @@ def withdraw(user_id, amount):
     return {"message": f"Withdrawn {amount} successfully!"}
 
 
-def buy(user_id, stock_symbol, total_shares, price):
+def buy(user_id, stock_symbol, total_shares):
     connection, cursor = db.establish_connection()
+
+    price = st.fetch_price(stock_symbol)['price']
 
     amount = total_shares * price
     cash_balance = am.get_cash_balance(user_id)
@@ -84,25 +86,47 @@ def buy(user_id, stock_symbol, total_shares, price):
 def sell(user_id, stock_symbol, shares):
     connection, cursor = db.establish_connection()
 
-    cursor.execute("SELECT current_market_price FROM positions WHERE user_id = %s AND symbol = %s", (user_id, stock_symbol,))
-    current_market_price = cursor.fetchone()
+    current_market_price = st.fetch_price(stock_symbol)['price']
 
     cursor.execute("SELECT total_shares FROM positions WHERE user_id = %s AND symbol = %s", (user_id, stock_symbol,))
     total_shares = cursor.fetchone()
+
+    amount = shares * current_market_price
 
     if not total_shares or total_shares[0] < shares:
         db.close_connection(connection, cursor)
         return {"message": "Transaction failed. Insufficient shares!"}
 
-    amount = shares * current_market_price[0]
-
     am.update_cash_balance(user_id, amount)
-    am.update_position('SELL', user_id, stock_symbol, shares, current_market_price)
-    am.update_transaction('SELL', user_id, stock_symbol, shares, current_market_price, amount)
+
+    if total_shares[0] == shares:
+        cursor.execute("DELETE FROM positions WHERE user_id = %s AND symbol = %s", (user_id, stock_symbol,))
+        connection.commit()
+    else:
+        am.update_position('SELL', user_id, stock_symbol, shares, current_market_price)
+        am.update_transaction('SELL', user_id, stock_symbol, shares, current_market_price, amount)
 
     db.close_connection(connection, cursor)
     return {"message": f"Successfully sold {shares} shares of {stock_symbol}!"}
 
-
 def update_data():
-    return
+    connection, cursor = db.establish_connection()
+
+    cursor.execute("SELECT user_id, symbol, average_price, total_shares FROM positions")
+    positions = cursor.fetchall()
+
+    for position in positions:
+        user_id, symbol, average_price, total_shares = position
+
+        latest_price = st.fetch_price(symbol)['price']
+
+        market_value = total_shares * latest_price
+        gain_loss = (total_shares * latest_price) - (average_price * total_shares)  
+        percentage_gain_loss = ((total_shares * latest_price) - (average_price * total_shares)) / (average_price * total_shares) * 100  
+
+        cursor.execute("UPDATE positions SET current_market_price = %s, market_value = %s, gain_loss = %s, percentage_gain_loss = %s WHERE user_id = %s AND symbol = %s",
+                       (latest_price, market_value, gain_loss, percentage_gain_loss, user_id, symbol))
+
+    connection.commit()
+    db.close_connection(connection, cursor)
+

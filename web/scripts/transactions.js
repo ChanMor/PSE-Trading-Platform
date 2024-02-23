@@ -127,6 +127,10 @@ function dashboard() {
     saveUserId("dashboard.html")
 }
 
+function account() {
+    saveUserId("account.html");
+}  
+
 
 function getUserId() {
     const queryString = window.location.search;

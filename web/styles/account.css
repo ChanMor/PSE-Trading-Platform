@@ -1,0 +1,151 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #333;
+}
+
+header {
+    background-color: #ffffff;
+    color: #000;
+    padding: 20px;
+    text-align: center;
+}
+
+#desktop-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 16px 250px 16px; 
+}
+
+#desktop-nav .logo {
+    font-size: 30px;
+    color: #000;
+}
+
+#desktop-nav ul.nav-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#desktop-nav ul.nav-links li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+#desktop-nav ul.nav-links li:last-child {
+    margin-right: 0; 
+}
+
+#desktop-nav ul.nav-links li a {
+    text-decoration: none;
+    color: #000;
+}
+
+#desktop-nav ul.nav-links li a:hover {
+    text-decoration: underline;
+}
+
+#desktop-nav button {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px;
+    border: 1px solid #000000;
+    border-radius: 10px; 
+    cursor: pointer;
+    width: 100px; 
+}
+
+#desktop-nav button:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#account-manager {
+    max-width: 1000px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #000; 
+}
+
+#account-manager h2 {
+    color: #000;
+    margin-top: 10px;
+}
+
+#form-options label {
+    display: block;
+    margin-bottom: 8px;
+    color: #000;
+}
+
+#form-selector {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#form-selector:hover {
+    border-color: #9b9b9b;
+}
+
+#account-form {
+    max-width: 1000px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #000; 
+}
+
+#account-form form h3 {
+    color: #000;
+    margin-bottom: 8px;
+}
+
+#account-form label {
+    color: #000;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#account-form input,
+#account-form select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+}
+
+#account-form select:hover {
+    border-color: #9b9b9b;
+}
+
+#account-form button {
+    background-color: #000;
+    border: 1px solid #000;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin-top: 5px; 
+}
+
+#account-form button:hover {
+    background-color: #fff;
+    color: black;
+}

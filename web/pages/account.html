@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Table</title>
+    <link rel="stylesheet" href="account.css">
+</head>
+<body>
+
+    <header>
+
+        <nav id="desktop-nav">
+            <div class="logo">Trading Dashboard</div>
+            <div>
+              <ul class="nav-links">
+                <li><a href="#trade.html" onclick="trade();">Trade</a></li>
+                <li><a href="#listings.html" onclick="listings();">Listings</a></li>
+                <li><a href="#transactions.html" onclick="transactions();">Transaction History</a></li>
+                <li><a href="#transactions.html" onclick="dashboard();">Dashboard</a></li>
+                <li><a href="#transactions.html" onclick="account();">Account</a></li>
+                <button id="signOutButton" type="button" onclick="signOut();">Sign Out</button>
+              </ul>
+            </div>
+        </nav>
+
+    </header>
+    
+    <section id="account-manager">
+      <h2>Account Management</h2>
+
+      <div id="form-options">
+          <label for="form-selector">Select an option:</label>
+          <select id="form-selector" onchange="showForm()">
+              <option value="update-username">Update Username</option>
+              <option value="update-password">Update Password</option>
+              <option value="delete-account">Delete Account</option>
+              <option value="funds">Deposit/Withdraw Funds</option>
+          </select>
+      </div>
+
+    </section>
+
+    <section id="account-content">
+      
+    </section>
+
+    <script src="account.js"></script>
+</body>
+</html>

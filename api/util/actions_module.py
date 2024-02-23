@@ -45,7 +45,7 @@ def update_position(transaction, user_id, stock_symbol, total_shares, price):
         cursor.execute(buy_position_query, position_values)
 
     if transaction == 'SELL':
-        position_values = (total_shares, price[0], price[0], price[0], user_id, stock_symbol)
+        position_values = (total_shares, price, price, price, user_id, stock_symbol)
         cursor.execute(sell_position_query, position_values)
 
     connection.commit()
@@ -61,7 +61,7 @@ def update_transaction(transaction, user_id, stock_symbol, total_shares, price, 
         cursor.execute(transaction_query, transaction_values)
 
     if transaction == 'SELL':
-        transaction_values = (user_id, stock_symbol, 'SELL', total_shares, price[0], amount, transaction_date)
+        transaction_values = (user_id, stock_symbol, 'SELL', total_shares, price, amount, transaction_date)
         cursor.execute(transaction_query, transaction_values)
 
     connection.commit()

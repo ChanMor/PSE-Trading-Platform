@@ -73,3 +73,4 @@ def fetch_price(symbol):
             return { 'price': float(columns[2].get_text().split()[0])}
 
     return {'price': None}
+

@@ -17,13 +17,19 @@ async function updateListings() {
         const sanitizedMonth = "listings"; // You can adjust this based on your needs
         const listingsTable = createListingsTable(listings, sanitizedMonth);
 
-        // Get the container where you want to append the table
         const listingsContainer = document.getElementById('listings-content');
 
-        // Clear existing content
+
         listingsContainer.innerHTML = '';
 
-        // Append the new table to the container
+        const headingElement = document.createElement('h2');
+        headingElement.textContent = 'PSE Listed Stocks';
+
+        const headingParagraph = document.createElement('p');
+        headingParagraph.textContent = 'Real time stock prices data, web scraped from pesobility.com';
+
+        listingsContainer.appendChild(headingElement);
+        listingsContainer.appendChild(headingParagraph);
         listingsContainer.appendChild(listingsTable);
     } catch (error) {
         console.error('Error updating listings:', error);
@@ -89,6 +95,9 @@ function dashboard() {
     saveUserId("dashboard.html")
 }
 
+function account() {
+    saveUserId("account.html");
+}
 
 function getUserId() {
     const queryString = window.location.search;

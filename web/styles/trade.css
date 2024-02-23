@@ -64,3 +64,55 @@ header {
     background-color: #ffffff;
     color: #000000;
 }
+
+
+#trading-content {
+    max-width: 450px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#trading-content h2 {
+    color: #000;
+}
+
+#trading-content label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+#trading-content input,
+#trading-content select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#trading-content button {
+    width: 100%;
+    background-color: white;
+    color: black;
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    margin-bottom: 12px;
+}
+
+#trading-content button:hover {
+    background-color: #000000;
+    color: white;
+}
+
+#trading-content p {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
