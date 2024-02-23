@@ -53,7 +53,7 @@ async function saveUserId(username) {
     const apiData = { key: userId };
     const queryString = `?data=${encodeURIComponent(JSON.stringify(apiData))}`;
 
-    window.location.href = `dashboard.html${queryString}`;
+    window.location.href = `pages/dashboard.html${queryString}`;
 }
 
 
