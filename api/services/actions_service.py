@@ -121,8 +121,8 @@ def update_data():
         latest_price = st.fetch_price(symbol)['price']
 
         market_value = total_shares * latest_price
-        gain_loss = (total_shares * latest_price) - (average_price * total_shares)  
-        percentage_gain_loss = ((total_shares * latest_price) - (average_price * total_shares)) / (average_price * total_shares) * 100  
+        gain_loss = float(total_shares * latest_price) - float(average_price * total_shares)  
+        percentage_gain_loss = gain_loss / float(average_price * total_shares) * 100  
 
         cursor.execute("UPDATE positions SET current_market_price = %s, market_value = %s, gain_loss = %s, percentage_gain_loss = %s WHERE user_id = %s AND symbol = %s",
                        (latest_price, market_value, gain_loss, percentage_gain_loss, user_id, symbol))

@@ -44,7 +44,7 @@ function groupTransactionsByMonth(transactions) {
     // Group transactions by month using a Map
     const transactionsByMonth = new Map();
 
-    transactions.forEach(trans => {
+    transactions.reverse().forEach(trans => {
         const transactionDate = new Date(trans.transaction_date);
         const month = transactionDate.toLocaleString('en-US', { month: 'long', year: 'numeric' });
 
