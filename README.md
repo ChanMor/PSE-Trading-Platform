@@ -17,6 +17,10 @@ pip install "fastapi[all]"
 
 To run the program, execute the following command:
 ```bash
-chmod +x run.sh
+# To run the api, go to the api directory
+python -m uvicorn main:app
+
+# To see the webpage, go to the web directory
+start index.html
 ```
 
