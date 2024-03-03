@@ -15,8 +15,8 @@ pip install "fastapi[all]"
 
 ## Running The Program
 
-To run the API, execute the following command:
+To run the program, execute the following command:
 ```bash
-python -m uvicorn main:app 
+chmod +x run_project.sh
 ```
 
