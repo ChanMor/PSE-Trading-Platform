@@ -17,6 +17,6 @@ pip install "fastapi[all]"
 
 To run the program, execute the following command:
 ```bash
-chmod +x run_project.sh
+chmod +x run.sh
 ```
 
