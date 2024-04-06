@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <header>
+    <!-- <header>
         <h1>PSE Virtual Trading App</h1>
         <p>Trade PSE listed stocks with real time data</p>
     </header>
@@ -27,7 +27,32 @@
 
             <p>Don't have an account? <a href="javascript:void(0);" onclick="toggleButtonText();">Create one</a></p>
         </form>
+    </section> -->
+
+    <section id="signin">
+
+        <div id="signin-main">
+
+            <div id="login-form">
+                <h2>PSE Virtual Trading</h2>
+
+                <form>
+
+                    <input type="text" id="username" placeholder="Username" required>
+                    <input type="password" id="password" placeholder="Password" required>
+                    <button id="signinButton" type="button" onclick="auth();">Sign In</button>
+
+                    <a href="javascript:void(0);" onclick="toggleButtonText();"><p>Don't have an account? <span style="font-weight:bold">Create one</span></p> </a></a>
+                </form>
+                
+                
+            </div>
+
+        </div>
+
     </section>
+
+    
 
 </body>
 </html>
