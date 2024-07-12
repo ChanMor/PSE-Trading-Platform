@@ -1,142 +1,78 @@
 /* styles.css */
 
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,300");
-
-body
-{
+body {
+    font-family: 'Roboto', sans-serif;
     margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #000;
 }
 
-*
-{
-    font-family: "Open Sans";
-    font-weight: 600;
-    letter-spacing: 1px;
+header {
+    background-color: #fff;
+    color: #000;
+    padding: 20px;
+    text-align: center;
 }
 
-#signin
-{
-    height: 100vh;
-    background: url("www/bg-signin.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: right;
+section#signin {
+    max-width: 400px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #000; 
 }
 
-#signin-main
-{
-    width:calc(1080px - 50vw);
-    min-width:45%;
-    max-width:80%;
-
-    height: 100%;
-
-    box-shadow: 10px 0px 10px rgb(0,0,0,0.25);
-    background-color: rgb(256, 256, 256, 0.95);
-    position: absolute;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+section#signin h2 {
+    font-family: 'Roboto', sans-serif;
+    margin: 20px;
+    background-color: #fff;
+    color: #000;
+    text-align: center;
 }
 
-#login-form 
-{
-    width: 50%;
-    height: auto;
-    border: 2px solid rgb(0,0,0,0.25);
-    padding: clamp(20px, 5vw ,40px);
-    border-radius: 20px;
-    box-shadow: 0px 0px 10px rgb(0,0,0,0.25);
-
+section#signin form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
-#login-form h2 
-{
-    font-size: clamp(30px, 4vw, 45px) !important;
-    text-align: center;
-    color: #32646D;
-
-    font-weight: bold  !important;
-
-    margin-top: -1rem;
+section#signin label {
+    margin-bottom: 8px;
 }
 
-#login-form input[type=text], #login-form input[type=password]
-{
-    width: 90%;
-    border-radius: 20px;
-    border: 2px solid #ccc;
-    padding: 5%;
-
-    background-color: rgb(256, 256, 256, 0.25);
-
-    margin-bottom: 20px;
-
-    font-size: clamp(11px, 3vw, 18px);
+section#signin input {
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
-::placeholder
-{
-    opacity: 0.25;
+section#signin button {
+    background-color: #fff;
+    color: #000;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-#login-form button
-{
-    width: 100%;
-    border-radius: 20px;
-    border: none;
-    padding: 5%;
-    margin-bottom: 20px;
-
-    font-size: clamp(11px, 3vw, 18px);
-    color: white;
-    
-    background-image: linear-gradient(to right, #3A8195, #2DDDA3);
-    background-size: 200% 100%;
-    background-position: left bottom;
-    
+section#signin button:hover {
+    background-color: #000;
+    color: #fff;
 }
 
-#login-form a
-{
-    text-align: center;
+section#signin p {
+    color: #000000;
+    margin-top: 30px;
+}
+
+section#signin a {
+    color: #3498db;
     text-decoration: none;
-
-    color:#34AC9C;
-    font-size: clamp(12px, 2vw, 16px);
 }
 
-#login-form input:hover, #login-form button:hover, #login-form p:hover
-{
-    transform: scale(1.02);
-    transition: transform 0.05s ease-in-out;
-
-    animation: move 2s ease-in-out infinite alternate;
-}
-
-@keyframes move {
-    from {background-position: left bottom;}
-    to {background-position: right bottom;}
-}
-
-@media only screen and (max-width: 720px) 
-{
-    #signin
-    {
-        display:flex;
-        justify-content: center;
-        align-items: center;
-    }
-    #signin-main
-    {
-        width: 80%;
-        height: 80%;
-        box-shadow: 0px 0px 10px rgb(0,0,0,0.25);
-        border-radius: 10px;
-    }
+section#signin a:hover {
+    text-decoration: underline;
 }

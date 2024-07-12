@@ -4,7 +4,7 @@ def establish_connection():
     connection = mysql.connector.connect(
         host='localhost',
         user='root',
-        password='hpvictus',
+        password='fcdm110503',
         database='trading_platform')
     cursor = connection.cursor()
 
